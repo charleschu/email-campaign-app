@@ -12,37 +12,34 @@
         <div class="yui3-menu-content"><!-- Content box -->
             <ul>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>New Campaign</em></a>
+                    <a class="yui3-menu-label" href="#campain"><em>New Campaign</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Design</em></a>
+                    <a class="yui3-menu-label" href="#design"><em>Design</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Preview</em></a>
+                    <a class="yui3-menu-label" href="#preview"><em>Preview</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Recipients</em></a>
+                    <a class="yui3-menu-label" href="#recipients"><em>Recipients</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Test</em></a>
+                    <a class="yui3-menu-label" href="#test"><em>Test</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Launch</em></a>
+                    <a class="yui3-menu-label" href="#launch"><em>Launch</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#submenu-1"><em>Results</em></a>
+                    <a class="yui3-menu-label" href="#results"><em>Results</em></a>
                 </li>
             </ul>
         </div>
     </div>
-    <div id="work-space" >
+    <div id="wrapper" >
 
     </div>
     <script type="text/javascript">
         YUI().use('node','event', function (Y) {
-            Y.use('event-focus', 'json', 'model', 'model-list', 'view', function (Y) {
-            // ... Add the code for app framework
-            });
             Y.use('node-menunav', function(Y) {
                 //for the css grid
                 var menu = Y.one("#menu-bar");
@@ -53,6 +50,43 @@
                 // code here.
             });
 
+        });
+        YUI().use('app',function(Y){
+            Y.EmailApp = Y.Base.create('emailApp', Y.App, [], {
+                views: {
+                    page: {type: 'PageView'}
+                }
+            });
+            Y.PageView = Y.Base.create('pageView', Y.View, [], {
+                render: function () {
+                    var page = this.get('page');
+                    this.get('container').set('text', 'This is ' + page + ' Page!');
+                    return this;
+                }
+            });
+            Y.EmailRouter = Y.Base.create('emailRouter', Y.Router, [],{
+            },{
+                ATTRS: {
+                    root: {
+                        value: '/index.html'
+                    }
+                },
+                routes: {
+
+                }
+            });
+            var app = new Y.EmailApp({
+                serverRouting: true,
+                viewContainer: '#wrapper'
+            });
+            router = new Y.EmailRouter();
+            router.route('/:path', function (req) {
+                var page = req.params.path;
+
+                app.showView('page', {page: page});
+            });
+
+            app.render().save('#campaign');
         });
     </script>
 </body>
