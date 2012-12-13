@@ -35,12 +35,78 @@
             </ul>
         </div>
     </div>
-    <div id="wrapper" >
+    <div id="wrapper" class="container">
 
     </div>
 
     <script type="text/x-template" id="campaign-content">
+        <div>
+            Getting Started
+            <a href="javascript:void(0)" class="email-calendar">Email Calendar</a>
+        </div>
 
+        <div>
+            <div class="edit-type">
+                Name of Email
+                <br />
+                See What Emails are currently scheduled
+            </div>
+            <div class="item-name">Email Name:</div>
+            <div class="item-value">
+                <input type="text" />
+                <a href="javascript:void(0)">Creat From Name</a>
+                <br>
+                For reference onlyk, will not be visible to recipients
+            </div>
+        </div>
+
+        <div>
+            <div class="edit-type">
+                Email Settings
+                <br />
+                Please select you from address and type in your subject as they will appear in the box.
+            </div>
+            <div class="item-name">Frome Name:</div>
+            <div class="item-value">
+                <input type="text" />
+            </div>
+            <div class="clear"></div>
+            <div class="item-name">Subject Line:</div>
+            <div class="item-value">
+                <input type="text" />
+                <br>
+                We recommend specific subject lines of less than 50 characters
+                <br>
+                <a href="javascript:void(0)">Mulitple Subject Lines Click Here</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div>
+            <div class="edit-type">
+                In order to be compliant with CAN Spam laws, emails must include an option to Unsubscribe and a valid Postal Address.
+            </div>
+            <div class="item-name">Unsubscribe Information:</div>
+            <div class="item-value">
+                <textarea></textarea>
+                <br>
+                Change Unsubscribe Message
+            </div>
+            <div class="clear"></div>
+            <div class="item-name">Reply-to Email Address:</div>
+            <div class="item-value">
+                <input type="text" />
+                <br>
+                All replies for this email will be sent to this address.
+                <br>
+                <a href="javascript:void(0)">Mulitple Subject Lines Click Here</a>
+            </div>
+        </div>
+
+        <div class="operation">
+            <input type="button" value="cancel" />
+            <input type="button" value="Next" />
+        </div>
     </script>
 
     <script type="text/javascript">
@@ -101,13 +167,14 @@
                 }
             });
             Y.PageView = Y.Base.create('pageView', Y.View, [], {
-                template: '<p>This is {name} page</p>' +
-                        '<button>Go</button>',
+//                template: '<p>This is {name} page</p>' +
+//                        '<button>Go</button>',
+                template: Y.one('#campaign-content').getHTML(),
 
                 render: function () {
                     var page = this.get('page'),
-                        content = Y.Lang.sub(this.template, {name: page});
-//                    this.get('container').set('text', 'This is ' + page + ' Page!');
+//                        content = Y.Lang.sub(this.template, {name: page});
+                        content = Y.Lang.sub(this.template);
                     this.get('container').setHTML(content);
                     return this;
                 }
