@@ -12,25 +12,25 @@
         <div class="yui3-menu-content"><!-- Content box -->
             <ul>
                 <li>
-                    <a class="yui3-menu-label" href="#campain"><em>New Campaign</em></a>
+                    <a class="yui3-menu-label" href="/campaign"><em>New Campaign</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#design"><em>Design</em></a>
+                    <a class="yui3-menu-label" href="/design"><em>Design</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#preview"><em>Preview</em></a>
+                    <a class="yui3-menu-label" href="/preview"><em>Preview</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#recipients"><em>Recipients</em></a>
+                    <a class="yui3-menu-label" href="/recipients"><em>Recipients</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#test"><em>Test</em></a>
+                    <a class="yui3-menu-label" href="/test"><em>Test</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#launch"><em>Launch</em></a>
+                    <a class="yui3-menu-label" href="/launch"><em>Launch</em></a>
                 </li>
                 <li>
-                    <a class="yui3-menu-label" href="#results"><em>Results</em></a>
+                    <a class="yui3-menu-label" href="/results"><em>Results</em></a>
                 </li>
             </ul>
         </div>
@@ -51,10 +51,45 @@
             });
 
         });
-        YUI().use('app',function(Y){
+        YUI().use('app','router',function(Y){
             Y.EmailApp = Y.Base.create('emailApp', Y.App, [], {
+
+                showCampaignPage: function(req){
+                    this.showView('page',
+                            {page: "campaign" });
+                },
+                showDesignPage:function(req){
+                    this.showView('page',
+                            {page: "design" });
+                },
+                initializer: function () {
+                    this.once('ready', function (e) {
+                        console.log(this.getPath);
+                        if (this.hasRoute(this.getPath())) {
+                            this.dispatch();
+                        } else {
+                            this.showCampaignPage();
+                        }
+                    });
+                },
                 views: {
                     page: {type: 'PageView'}
+                }
+            },{
+                ATTRS:{
+                    routes: {
+                        value: [
+                            {path: '/', callbacks: 'showCampaignPage'},
+                            {path: '/campaign', callbacks: 'showCampaignPage'},
+                            {path: '/design', callbacks: 'showDesignPage'},
+                            {path: '/preview', callbacks: 'showDesignPage'},
+                            {path: '/recipients', callbacks: 'showDesignPage'},
+                            {path: '/test', callbacks: 'showDesignPage'},
+                            {path: '/launch', callbacks: 'showDesignPage'},
+                            {path: '/results', callbacks: 'showDesignPage'},
+                        ]
+
+                    }
                 }
             });
             Y.PageView = Y.Base.create('pageView', Y.View, [], {
@@ -64,29 +99,14 @@
                     return this;
                 }
             });
-            Y.EmailRouter = Y.Base.create('emailRouter', Y.Router, [],{
-            },{
-                ATTRS: {
-                    root: {
-                        value: '/index.html'
-                    }
-                },
-                routes: {
-
-                }
-            });
             var app = new Y.EmailApp({
                 serverRouting: true,
                 viewContainer: '#wrapper'
             });
-            router = new Y.EmailRouter();
-            router.route('/:path', function (req) {
-                var page = req.params.path;
 
-                app.showView('page', {page: page});
-            });
 
-            app.render().save('#campaign');
+//            app.render().save('campaign');
+            app.render();
         });
     </script>
 </body>
