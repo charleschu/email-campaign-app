@@ -39,6 +39,7 @@
 
     </div>
 
+    <!--this is the template for campain page-->
     <script type="text/x-template" id="campaign-content">
         <div>
             Getting Started
@@ -109,6 +110,48 @@
         </div>
     </script>
 
+
+    <!--this is the template for design page-->
+    <script type="text/x-template" id="design-content">
+        <div>
+            Select the Email Editor
+        </div>
+
+        <div>
+            <input type="radio"> Email Wizard(recommended for all users)</input>
+            <ul>
+                <li>Easy to use</li>
+                <li>Pre-located template designs</li>
+                <li>Easy Drog and frop formatting</li>
+                <li>Customize templates for your own look and feel</li>
+                <li>Receive assistance to help you along the way</li>
+            </ul>
+
+            <input type="radio"> Email Wizard(recommended for all users)</input>
+            <ul>
+                <li>Easy to use</li>
+                <li>Pre-located template designs</li>
+                <li>Easy Drog and frop formatting</li>
+                <li>Customize templates for your own look and feel</li>
+                <li>Receive assistance to help you along the way</li>
+            </ul>
+
+            <input type="radio"> Email Wizard(recommended for all users)</input>
+            <ul>
+                <li>Easy to use</li>
+                <li>Pre-located template designs</li>
+                <li>Easy Drog and frop formatting</li>
+                <li>Customize templates for your own look and feel</li>
+                <li>Receive assistance to help you along the way</li>
+            </ul>
+        </div>
+
+        <div class="operation">
+            <input type="button" value="Back" />
+            <input type="button" value="Next" />
+        </div>
+    </script>
+
     <script type="text/javascript">
         YUI().use('node','event', function (Y) {
             Y.use('node-menunav', function(Y) {
@@ -126,12 +169,10 @@
             Y.EmailApp = Y.Base.create('emailApp', Y.App, [], {
 
                 showCampaignPage: function(req){
-                    this.showView('page',
-                            {page: "campaign" });
+                    this.showView('campaign');
                 },
                 showDesignPage:function(req){
-                    this.showView('page',
-                            {page: "design" });
+                    this.showView('design');
                 },
                 showPreviewPage:function(req){
                     this.showView('page',
@@ -147,6 +188,8 @@
                     });
                 },
                 views: {
+                    campaign: {type: 'CampaignView'},
+                    design: {type: 'DesignView'},
                     page: {type: 'PageView'}
                 }
             },{
@@ -156,29 +199,56 @@
                             {path: '/', callbacks: 'showCampaignPage'},
                             {path: '/campaign', callbacks: 'showCampaignPage'},
                             {path: '/design', callbacks: 'showDesignPage'},
-                            {path: '/preview', callbacks: 'showDesignPage'},
-                            {path: '/recipients', callbacks: 'showDesignPage'},
-                            {path: '/test', callbacks: 'showDesignPage'},
-                            {path: '/launch', callbacks: 'showDesignPage'},
-                            {path: '/results', callbacks: 'showDesignPage'}
+                            {path: '/preview', callbacks: 'showPreviewPage'},
+                            {path: '/recipients', callbacks: 'showPreviewPage'},
+                            {path: '/test', callbacks: 'showPreviewPage'},
+                            {path: '/launch', callbacks: 'showPreviewPage'},
+                            {path: '/results', callbacks: 'showPreviewPage'}
                         ]
 
                     }
                 }
             });
-            Y.PageView = Y.Base.create('pageView', Y.View, [], {
-//                template: '<p>This is {name} page</p>' +
-//                        '<button>Go</button>',
+
+ //===========================define the view============================================
+            //this is the view for campaign page
+            Y.CampaignView = Y.Base.create('campaignView', Y.View, [], {
                 template: Y.one('#campaign-content').getHTML(),
 
                 render: function () {
                     var page = this.get('page'),
-//                        content = Y.Lang.sub(this.template, {name: page});
                         content = Y.Lang.sub(this.template);
                     this.get('container').setHTML(content);
                     return this;
                 }
             });
+
+            //this is the view for campaign page
+            Y.DesignView = Y.Base.create('designView', Y.View, [], {
+                template: Y.one('#design-content').getHTML(),
+
+                render: function () {
+                    var page = this.get('page'),
+                            content = Y.Lang.sub(this.template);
+                    this.get('container').setHTML(content);
+                    return this;
+                }
+            });
+
+            //
+            Y.PageView = Y.Base.create('pageView', Y.View, [], {
+                template: '<p>This is {name} page</p>' +
+                        '<button>Go</button>',
+
+                render: function () {
+                    var page = this.get('page'),
+                        content = Y.Lang.sub(this.template, {name: page});
+                    this.get('container').setHTML(content);
+                    return this;
+                }
+            });
+//==============================================================================
+
             var app = new Y.EmailApp({
                 serverRouting: true,
                 viewContainer: '#wrapper'
