@@ -5,19 +5,14 @@
  * Time: PM1:27
  * To change this template use File | Settings | File Templates.
  */
-YUI().use('node','event', function (Y) {
+YUI().use('app','handlebars', function(Y){
+
   Y.use('node-menunav', function(Y) {
     //for the css grid
     var menu = Y.one("#menu-bar");
     menu.plug(Y.Plugin.NodeMenuNav);
   });
-  Y.use('handlebars', function (Y) {
-    // Handlebars is available and ready for use. Add implementation
-    // code here.
-  });
 
-});
-YUI().use('app',function(Y){
   Y.EmailApp = Y.Base.create('emailApp', Y.App, [], {
 
     showCampaignPage: function(req){
@@ -65,11 +60,12 @@ YUI().use('app',function(Y){
 //===========================define the view============================================
   //this is the view for campaign page
   Y.CampaignView = Y.Base.create('campaignView', Y.View, [], {
-    template: Y.one('#campaign-content').getHTML(),
+    template: Y.Handlebars.compile(Y.one('#campaign-content').getHTML()),
 
     render: function () {
       var page = this.get('page'),
-        content = Y.Lang.sub(this.template);
+          content = this.template({character_size: "80"});
+//        content = Y.Lang.sub(this.template);
       this.get('container').setHTML(content);
       return this;
     }

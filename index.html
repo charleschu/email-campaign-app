@@ -41,7 +41,7 @@
   </div>
 
   <!--this is the template for campain page-->
-  <script type="text/x-template" id="campaign-content">
+  <script type="text/x-handlebars-template" id="campaign-content">
     <div>
       Getting Started
       <a href="javascript:void(0)" class="email-calendar">Email Calendar</a>
@@ -77,7 +77,7 @@
       <div class="item-value">
         <input type="text" />
         <br>
-        We recommend specific subject lines of less than 50 characters
+        We recommend specific subject lines of less than {{character_size}} characters
         <br>
         <a href="javascript:void(0)">Mulitple Subject Lines Click Here</a>
       </div>
@@ -113,7 +113,7 @@
 
 
   <!--this is the template for design page-->
-  <script type="text/x-template" id="design-content">
+  <script type="text/x-handlebars-template" id="design-content">
     <div>
       Select the Email Editor
     </div>
