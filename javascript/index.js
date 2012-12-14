@@ -1,9 +1,5 @@
 /**
- * Created with JetBrains WebStorm.
- * User: scsvcbear
- * Date: 12-12-14
- * Time: PM1:27
- * To change this template use File | Settings | File Templates.
+ * This is the YUI code
  */
 YUI().use('app','handlebars', function(Y){
 
