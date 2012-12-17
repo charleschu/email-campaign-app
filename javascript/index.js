@@ -14,10 +14,10 @@ YUI().use('app','handlebars', function(Y){
     showCampaignPage: function(req){
       this.showView('campaign');
     },
-    showDesignPage:function(req){
+    showDesignPage: function(req){
       this.showView('design');
     },
-    showPreviewPage:function(req){
+    showPreviewPage: function(req){
       this.showView('page',
         {page: "preview" });
     },
@@ -92,6 +92,19 @@ YUI().use('app','handlebars', function(Y){
     }
   });
 //==============================================================================
+
+
+//===========================define the view====================================
+  Y.Email = Y.Base.create('email', Y.Model, [], {
+
+  },{
+    ATTRS: {
+      name: null
+    }
+  });
+//==============================================================================
+
+
 
   var app = new Y.EmailApp({
     serverRouting: true,
