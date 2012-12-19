@@ -1,0 +1,37 @@
+    <div>
+      Select the Email Editor
+    </div>
+
+    <div>
+      <input type="radio"> Email Wizard(recommended for all users)</input>
+      <ul>
+        <li>Easy to use</li>
+        <li>Pre-located template designs</li>
+        <li>Easy Drog and frop formatting</li>
+        <li>Customize templates for your own look and feel</li>
+        <li>Receive assistance to help you along the way</li>
+      </ul>
+
+      <input type="radio"> Email Wizard(recommended for all users)</input>
+      <ul>
+        <li>Easy to use</li>
+        <li>Pre-located template designs</li>
+        <li>Easy Drog and frop formatting</li>
+        <li>Customize templates for your own look and feel</li>
+        <li>Receive assistance to help you along the way</li>
+      </ul>
+
+      <input type="radio"> Email Wizard(recommended for all users)</input>
+      <ul>
+        <li>Easy to use</li>
+        <li>Pre-located template designs</li>
+        <li>Easy Drog and frop formatting</li>
+        <li>Customize templates for your own look and feel</li>
+        <li>Receive assistance to help you along the way</li>
+      </ul>
+    </div>
+
+    <div class="operation">
+      <input type="button" value="Back" />
+      <input type="button" value="Next" />
+    </div>

@@ -6,10 +6,10 @@
     <link rel="stylesheet/less" type="text/css" href="stylesheet/index.less">
     <script src="javascript/lib/less.js" type="text/javascript"></script>
     <script src="javascript/lib/yui-min.js" type="text/javascript"></script>
-    <script src="javascript/view/campaign-view.js" type="text/javascript"></script>
-    <script src="javascript/view/design-view.js" type="text/javascript"></script>
-    <script src="javascript/view/page-view.js" type="text/javascript"></script>
-    <script src="javascript/model/email-model.js" type="text/javascript"></script>
+    <script src="javascript/views/campaign-view.js" type="text/javascript"></script>
+    <script src="javascript/views/design-view.js" type="text/javascript"></script>
+    <script src="javascript/views/page-view.js" type="text/javascript"></script>
+    <script src="javascript/models/email-model.js" type="text/javascript"></script>
     <script src="javascript/app.js" type="text/javascript"></script>
     <script src="javascript/index.js" type="text/javascript"></script>
 </head>
@@ -45,117 +45,5 @@
 
   </div>
 
-  <!--this is the template for campain page-->
-  <script type="text/x-handlebars-template" id="campaign-content">
-    <div>
-      Getting Started
-      <a href="javascript:void(0)" class="email-calendar">Email Calendar</a>
-    </div>
-
-    <div>
-      <div class="edit-type">
-        Name of Email
-        <br />
-        See What Emails are currently scheduled
-      </div>
-      <div class="item-name">Email Name:</div>
-      <div class="item-value">
-        <input type="text" />
-        <a href="javascript:void(0)">Creat From Name</a>
-        <br>
-        For reference onlyk, will not be visible to recipients
-      </div>
-    </div>
-
-    <div>
-      <div class="edit-type">
-        Email Settings
-        <br />
-        Please select you from address and type in your subject as they will appear in the box.
-      </div>
-      <div class="item-name">Frome Name:</div>
-      <div class="item-value">
-        <input type="text" />
-      </div>
-      <div class="clear"></div>
-      <div class="item-name">Subject Line:</div>
-      <div class="item-value">
-        <input type="text" />
-        <br>
-        We recommend specific subject lines of less than {{character_size}} characters
-        <br>
-        <a href="javascript:void(0)">Mulitple Subject Lines Click Here</a>
-      </div>
-      <div class="clear"></div>
-    </div>
-
-    <div>
-      <div class="edit-type">
-        In order to be compliant with CAN Spam laws, emails must include an option to Unsubscribe and a valid Postal Address.
-      </div>
-      <div class="item-name">Unsubscribe Information:</div>
-      <div class="item-value">
-        <textarea></textarea>
-        <br>
-        Change Unsubscribe Message
-      </div>
-      <div class="clear"></div>
-      <div class="item-name">Reply-to Email Address:</div>
-      <div class="item-value">
-        <input type="text" />
-        <br>
-        All replies for this email will be sent to this address.
-        <br>
-        <a href="javascript:void(0)">Mulitple Subject Lines Click Here</a>
-      </div>
-    </div>
-
-    <div class="operation">
-      <input type="button" value="cancel" />
-      <input type="button" value="Next" />
-    </div>
-  </script>
-
-
-  <!--this is the template for design page-->
-  <script type="text/x-handlebars-template" id="design-content">
-    <div>
-      Select the Email Editor
-    </div>
-
-    <div>
-      <input type="radio"> Email Wizard(recommended for all users)</input>
-      <ul>
-        <li>Easy to use</li>
-        <li>Pre-located template designs</li>
-        <li>Easy Drog and frop formatting</li>
-        <li>Customize templates for your own look and feel</li>
-        <li>Receive assistance to help you along the way</li>
-      </ul>
-
-      <input type="radio"> Email Wizard(recommended for all users)</input>
-      <ul>
-        <li>Easy to use</li>
-        <li>Pre-located template designs</li>
-        <li>Easy Drog and frop formatting</li>
-        <li>Customize templates for your own look and feel</li>
-        <li>Receive assistance to help you along the way</li>
-      </ul>
-
-      <input type="radio"> Email Wizard(recommended for all users)</input>
-      <ul>
-        <li>Easy to use</li>
-        <li>Pre-located template designs</li>
-        <li>Easy Drog and frop formatting</li>
-        <li>Customize templates for your own look and feel</li>
-        <li>Receive assistance to help you along the way</li>
-      </ul>
-    </div>
-
-    <div class="operation">
-      <input type="button" value="Back" />
-      <input type="button" value="Next" />
-    </div>
-  </script>
 </body>
 </html>
