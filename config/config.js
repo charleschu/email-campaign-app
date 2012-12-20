@@ -4,13 +4,13 @@ YUI.GlobalConfig = {
       base: '/javascript/views/',
       modules:{
         campaignView: {
-          path: '/campaign-view.js'
+          path: '/campaign.view.js'
         },
         designView: {
-          path: '/design-view.js'
+          path: '/design.view.js'
         },
         pageView: {
-          path: '/page-view.js'
+          path: '/page.view.js'
         }
       }
     },
@@ -18,7 +18,7 @@ YUI.GlobalConfig = {
       base: '/javascript/models/',
       modules:{
         emailModel: {
-          path: '/email-model.js'
+          path: '/email.model.js'
         }
       }
     },
